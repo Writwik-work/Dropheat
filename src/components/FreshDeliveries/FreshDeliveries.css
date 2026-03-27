@@ -299,6 +299,6 @@ display: none;
     height: 26px;
   }
   .fd-sidebar{
-display: none;
+display: none !important;
   }
 }

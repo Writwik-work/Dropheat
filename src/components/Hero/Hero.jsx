@@ -3,7 +3,7 @@ import "./Hero.css";
 
 /* SIDEBAR */
 import sidebar1 from "../../assets/hero/gift.png";
-import sidebar2 from "../../assets/hero/home.png";
+import sidebar2 from "../../assets/hero/Home.png";
 import sidebar3 from "../../assets/hero/treasure-chest 1.png";
 import sidebar4 from "../../assets/hero/crown.png";
 import sidebar5 from "../../assets/hero/sword.png";

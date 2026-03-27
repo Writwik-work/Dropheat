@@ -25,7 +25,7 @@ function FooterSidebar() {
 }
 
 // ✅ your images
-import stars from "../../assets/footer/stars.png"; 
+import stars from "../../assets/footer/Stars.png"; 
 import twitter from "../../assets/footer/x.png"; 
 import insta from "../../assets/footer/insta.png";
 import tiktok from "../../assets/footer/tiktok.png";

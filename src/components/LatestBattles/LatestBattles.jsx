@@ -12,9 +12,7 @@ function LbSidebar() {
         <button className="lb-sidebar__btn">❓</button>
         <button className="lb-sidebar__btn">📊</button>
       </div>
-
       <div className="lb-sidebar__divider" />
-
       <div className="lb-sidebar__bottom">
         <button className="lb-sidebar__btn">𝕏</button>
         <button className="lb-sidebar__btn">📸</button>
@@ -31,7 +29,6 @@ export default function LatestBattles() {
 
   return (
     <section className="lb-section">
-
       <LbSidebar />
 
       <div className="lb-body">
@@ -42,11 +39,7 @@ export default function LatestBattles() {
             <span className="lb-icon">⚔️</span>
             <h2>Latest Battles</h2>
           </div>
-
-          <button
-            className="lb-view-all"
-            onClick={() => setShowAll(!showAll)}
-          >
+          <button className="lb-view-all" onClick={() => setShowAll(!showAll)}>
             {showAll ? 'View Less' : 'View All'}
           </button>
         </div>
@@ -56,28 +49,23 @@ export default function LatestBattles() {
           {displayedBattles.map((battle) => (
             <div className="lb-card" key={battle.id}>
 
-              {/* TOP ROW — boxes */}
-              <div className="lb-card-top">
-                <div className="lb-items">
-                  {battle.items.map((itemImg, idx) => (
-                    <div className="lb-item-box" key={idx}>
-                      <img src={itemImg} alt="" />
-                    </div>
-                  ))}
-                  <div className="lb-end-space" />
-                </div>
+              {/* BOXES — middle, fills remaining space */}
+              <div className="lb-items">
+                {battle.items.map((itemImg, idx) => (
+                  <div className="lb-item-box" key={idx}>
+                    <img src={itemImg} alt="" />
+                  </div>
+                ))}
+                <div className="lb-end-space" />
               </div>
 
-              {/* BOTTOM ROW — players + price + button */}
-              <div className="lb-card-bottom">
-
+              {/* BOTTOM ROW on mobile / inline on desktop */}
+              <div className="lb-bottom-row">
                 {/* PLAYERS */}
                 <div className="lb-players">
                   <img src={battle.players[0]} className="lb-avatar" alt="" />
                   <img src={battle.players[1]} className="lb-avatar" alt="" />
-
                   <div className="lb-vs">⚔️</div>
-
                   <img src={battle.players[2]} className="lb-avatar" alt="" />
                   <img src={battle.players[3]} className="lb-avatar" alt="" />
                 </div>
@@ -87,7 +75,6 @@ export default function LatestBattles() {
                   <span className="lb-price">${battle.price}</span>
                   <button className="lb-btn-open">Open case</button>
                 </div>
-
               </div>
 
             </div>

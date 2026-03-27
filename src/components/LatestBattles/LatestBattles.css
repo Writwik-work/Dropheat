@@ -6,6 +6,7 @@
   align-items: flex-start;
 }
 
+/* ── SIDEBAR ── */
 .lb-sidebar {
   width: 52px;
   flex-shrink: 0;
@@ -20,7 +21,7 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: 0 0;
+  background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
@@ -39,8 +40,8 @@
   margin: 10px 0;
 }
 
-.lb-sidebar__bottom,
-.lb-sidebar__top {
+.lb-sidebar__top,
+.lb-sidebar__bottom {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -99,35 +100,54 @@
   gap: 12px;
 }
 
-/* ── CARD ── */
+/* ── CARD — DESKTOP: single row [players | boxes | actions] ── */
 .lb-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 12px;
   background: #1a1a20;
   border-radius: 14px;
-  padding: 12px 16px;
+  padding: 10px 16px;
   overflow: hidden;
 }
 
-/* boxes row */
-.lb-card-top {
-  width: 100%;
+/* ── BOTTOM ROW — display:contents on desktop so children join card flex row ── */
+.lb-bottom-row {
+  display: contents;
 }
-
-/* players + actions always on same row */
-.lb-card-bottom {
+.lb-players {
+  flex-shrink: 0;
+  background: #29292f;
+  padding: 10px 14px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  width: 100%;
+  gap: 2px;
+  order: -1;
 }
 
-.lb-card-bottom .lb-actions {
-  margin-left: auto;
+.lb-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-left: -12px;
 }
 
-/* ── BOXES STRIP ── */
+.lb-avatar:first-child {
+  margin-left: 0;
+}
+
+.lb-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+/* ── BOXES — fills all remaining space ── */
 .lb-items {
   flex: 1;
   min-width: 0;
@@ -154,52 +174,14 @@
 }
 
 .lb-item-box img {
-  width: 110px;
+  width: 100px;
   height: auto;
   display: block;
   object-fit: contain;
 }
 
 .lb-end-space {
-  min-width: 40px;
-}
-
-/* ── PLAYERS ── */
-.lb-players {
-  flex-shrink: 0;
-  background: #29292f;
-  padding: 10px 14px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.lb-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-left: -14px;
-}
-
-.lb-avatar:first-child {
-  margin-left: 0;
-}
-
-.lb-vs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 6px;
-  opacity: 1;
-  flex-shrink: 0;
-}
-
-.lb-vs img,
-.lb-vs svg {
-  width: 22px;
-  height: 22px;
+  min-width: 20px;
 }
 
 /* ── ACTIONS ── */
@@ -208,23 +190,22 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  flex-direction: row;
 }
 
 .lb-price {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   white-space: nowrap;
   color: #fff;
 }
 
 .lb-btn-open {
-  padding: 12px 28px;
+  padding: 12px 24px;
   background: linear-gradient(180deg, #7848ff, #6254ff);
   border: none;
   border-radius: 10px;
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
@@ -240,7 +221,71 @@
 /* ── 1024px ── */
 @media (max-width: 1024px) {
   .lb-item-box img {
-    width: 88px;
+    width: 80px;
+  }
+
+  .lb-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lb-price {
+    font-size: 16px;
+  }
+
+  .lb-btn-open {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+}
+
+/* ── MOBILE — two rows: [boxes] / [players  price  btn] ── */
+@media (max-width: 768px) {
+  .lb-sidebar {
+    display: none;
+  }
+
+  .lb-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+    background: #161822;
+  }
+
+  /* boxes full width on top */
+  .lb-items {
+    width: 100%;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .lb-item-box img {
+    width: 76px;
+  }
+
+  /* bottom row becomes a real flex row with players+actions */
+  .lb-bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .lb-players {
+    width: fit-content;
+    padding: 8px 10px;
+  }
+
+  .lb-avatar {
+    width: 40px;
+    height: 40px;
+    margin-left: -10px;
+  }
+
+  .lb-actions {
+    margin-left: auto;
+    gap: 10px;
   }
 
   .lb-price {
@@ -248,52 +293,7 @@
   }
 
   .lb-btn-open {
+    padding: 10px 18px;
     font-size: 13px;
-    padding: 10px 20px;
-  }
-}
-
-/* ── 768px ── */
-@media (max-width: 768px) {
-  .lb-sidebar {
-    display: none;
-  }
-
-  .lb-card {
-    padding: 12px;
-    background: #161822;
-  }
-
-  .lb-items {
-    width: 100%;
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .lb-item-box img {
-    width: 80px;
-  }
-
-  .lb-players {
-    padding: 10px;
-  }
-
-  .lb-avatar {
-    width: 42px;
-    height: 42px;
-    margin-left: -12px;
-  }
-
-  .lb-actions {
-    gap: 12px;
-  }
-
-  .lb-price {
-    font-size: 18px;
-  }
-
-  .lb-btn-open {
-    padding: 10px 20px;
-    font-size: 14px;
   }
 }

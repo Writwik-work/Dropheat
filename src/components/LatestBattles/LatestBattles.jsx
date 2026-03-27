@@ -43,7 +43,7 @@ export default function LatestBattles() {
             <h2>Latest Battles</h2>
           </div>
 
-          <button 
+          <button
             className="lb-view-all"
             onClick={() => setShowAll(!showAll)}
           >
@@ -55,40 +55,39 @@ export default function LatestBattles() {
         <div className="lb-list">
           {displayedBattles.map((battle) => (
             <div className="lb-card" key={battle.id}>
-              
-              {/* PLAYERS */}
-              <div className="lb-players">
-                <div className="lb-team">
-                  <img src={battle.players[0]} className="lb-avatar" />
-                  <img src={battle.players[1]} className="lb-avatar" />
-                </div>
 
-                <div className="lb-vs">⚔️</div>
-
-                <div className="lb-team">
-                  <img src={battle.players[2]} className="lb-avatar" />
-                  <img src={battle.players[3]} className="lb-avatar" />
+              {/* TOP ROW — boxes */}
+              <div className="lb-card-top">
+                <div className="lb-items">
+                  {battle.items.map((itemImg, idx) => (
+                    <div className="lb-item-box" key={idx}>
+                      <img src={itemImg} alt="" />
+                    </div>
+                  ))}
+                  <div className="lb-end-space" />
                 </div>
               </div>
 
-              {/* ITEMS */}
-              <div className="lb-items">
-                {battle.items.map((itemImg, idx) => (
-                  <div className="lb-item-box" key={idx}>
-                    <img src={itemImg} alt="" />
-                  </div>
-                ))}
+              {/* BOTTOM ROW — players + price + button */}
+              <div className="lb-card-bottom">
 
-                {/* ✅ FIX: END SPACE */}
-                <div className="lb-end-space" />
-              </div>
+                {/* PLAYERS */}
+                <div className="lb-players">
+                  <img src={battle.players[0]} className="lb-avatar" alt="" />
+                  <img src={battle.players[1]} className="lb-avatar" alt="" />
 
-              {/* ACTIONS */}
-              <div className="lb-actions">
-                <div className="lb-price">
-                  ${battle.price}
+                  <div className="lb-vs">⚔️</div>
+
+                  <img src={battle.players[2]} className="lb-avatar" alt="" />
+                  <img src={battle.players[3]} className="lb-avatar" alt="" />
                 </div>
-                <button className="lb-btn-open">Open case</button>
+
+                {/* ACTIONS */}
+                <div className="lb-actions">
+                  <span className="lb-price">${battle.price}</span>
+                  <button className="lb-btn-open">Open case</button>
+                </div>
+
               </div>
 
             </div>

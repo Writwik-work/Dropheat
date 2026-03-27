@@ -7,10 +7,10 @@ import { useTranslation } from "react-i18next";
 import logoImg from "../../assets/logos/main-logo.png";
 import logoMobileImg from "../../assets/logos/mobile-logo.png";
 import homeIcon from "../../assets/navbar/Home.png";
-import boxesIcon from "../../assets/navbar/Boxes.png";
-import battlesIcon from "../../assets/navbar/Battles.png";
-import vipIcon from "../../assets/navbar/VIP-members.png";
-import affiliatesIcon from "../../assets/navbar/Affiliates.png";
+import boxesIcon from "../../assets/navbar/boxes.png";
+import battlesIcon from "../../assets/navbar/battles.png";
+import vipIcon from "../../assets/navbar/vip-members.png";
+import affiliatesIcon from "../../assets/navbar/affiliates.png";
 import chatIcon from "../../assets/navbar/chat.png";
 
 const Navbar = () => {

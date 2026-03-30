@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Hero.css";
 
 /* SIDEBAR */
@@ -19,152 +19,186 @@ import referImg from "../../assets/hero/hero-2.png";
 import heroBg from "../../assets/hero/earth.png";
 import referBg from "../../assets/hero/lines.png";
 
-const liveDrops = [
-  { id: 1, img: drop1 },
-  { id: 2, img: drop1 },
-  { id: 3, img: drop1 },
-  { id: 4, img: drop1 },
-  { id: 5, img: drop1 },
-  { id: 6, img: drop1 },
-  { id: 7, img: drop1 },
-  { id: 8, img: drop1 },
-];
-
 const sidebarItems = [
-  { icon: sidebar2, label: "Home" },
-  { icon: sidebar1, label: "Free" },
-  { icon: sidebar3, label: "Boxes" },
-  { icon: sidebar4, label: "Battle" },
-  { icon: sidebar5, label: "Upgrade" },
+  { id: 1, img: sidebar1, label: "Home", active: true },
+  { id: 2, img: sidebar2, label: "Gifts" },
+  { id: 3, img: sidebar3, label: "Treasure" },
+  { id: 4, img: sidebar4, label: "Crown" },
+  { id: 5, img: sidebar5, label: "Battle" },
 ];
 
-const slides = ["hero", "refer"];
+const heroSlides = [{ id: 1 }, { id: 2 }];
 
-/* ── Reusable slide panels ── */
-function MainPanel() {
-  return (
-    <div className="hero-panel hero-panel--main slide">
-      <img src={heroBg} alt="" className="panel-bg" />
-      <div className="panel-text">
-        <h1>
+export default function Hero() {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const autoSlideRef = useRef(null);
+  const touchStartX = useRef(null);
+
+  useEffect(() => {
+    autoSlideRef.current = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 4000);
+    return () => clearInterval(autoSlideRef.current);
+  }, []);
+
+  const goToSlide = (i) => {
+    clearInterval(autoSlideRef.current);
+    setSlideIndex(i);
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      setSlideIndex((prev) =>
+        diff > 0
+          ? (prev + 1) % heroSlides.length
+          : (prev - 1 + heroSlides.length) % heroSlides.length
+      );
+    }
+    touchStartX.current = null;
+  };
+
+  /* ── Card components ── */
+  const SignupCard = () => (
+    <div className="hero__card hero__card--signup">
+      {/* Signup-specific bg class */}
+      <img src={heroBg} alt="" className="hero__card-bg hero__card-bg--signup" />
+
+      {/* Title + desc pinned to TOP */}
+      <div className="hero__card-top">
+        <h1 className="hero__title">
           Sign Up today
           <br />
           and claim your
           <br />
-          FREE box
+          <span className="hero__title-highlight">FREE box</span>
         </h1>
-        <p>
+        <p className="hero__desc">
           Unlock YOUR Free Box Today! Each box is a treasure trove of excitement
-          waiting to be discovered. Don't miss out – dive into the unknown with
-          us!
+          waiting to be discovered. Don't miss out – dive into the unknown with us!
         </p>
-        <button className="btn-claim">Claim now</button>
       </div>
-      <div className="panel-img-wrap">
-        <img src={heroImg} alt="Free Box" className="panel-hero-img" />
-        {/* <div className="free-badge-float">Free</div> */}
+
+      {/* CTA pinned to BOTTOM */}
+      <div className="hero__card-bottom">
+        <button className="hero__cta hero__cta--purple">Claim now</button>
+      </div>
+
+      {/* Floating product image */}
+      <div className="hero__card-img-wrap hero__card-img-wrap--signup">
+        <img src={heroImg} alt="Free Box" />
+        <span className="hero__badge hero__badge--green hero__badge--box">Free</span>
+        <span className="hero__badge hero__badge--green hero__badge--windy">
+           <span>Free</span>
+        </span>
       </div>
     </div>
   );
-}
 
-function ReferPanel() {
-  return (
-    <div className="hero-panel hero-panel--refer slide">
-      <img src={referBg} alt="" className="panel-bg panel-bg--lines" />
-      <div className="refer-top">
-        <h2>
-          Earn up to 10% on deposits from your friends
+  const ReferCard = () => (
+    <div className="hero__card hero__card--refer">
+      {/* Refer-specific bg class */}
+      <img src={referBg} alt="" className="hero__card-bg hero__card-bg--refer" />
+
+      {/* Title + desc pinned to TOP */}
+      <div className="hero__card-top hero__card-top--refer">
+        <h2 className="hero__title hero__title--refer">
+          Earn up to 10% on
+          <br />
+          deposits from
+          <br />
+          your friends
+          <span className="hero__badge hero__badge--pink hero__badge--inline">5%</span>
         </h2>
-        <span className="pct-badge">5%</span>
-        <p>Give your friends a 5% bonus added to all their cash deposits</p>
-        <button className="btn-refer">Refer a friend</button>
+        <p className="hero__desc hero__desc--refer">
+          Give your friends a 5% bonus added to all their cash deposits
+        </p>
       </div>
-      <div className="panel-img-wrap panel-img-wrap--refer">
-        <img src={referImg} alt="Refer" className="panel-hero-img" />
+
+      {/* CTA pinned to BOTTOM */}
+      <div className="hero__card-bottom">
+        <button className="hero__cta hero__cta--green">Refer a friend</button>
+      </div>
+
+      {/* Floating refer image */}
+      <div className="hero__card-img-wrap hero__card-img-wrap--refer">
+        <img src={referImg} alt="Refer a friend" />
       </div>
     </div>
   );
-}
-
-export default function Hero() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const intervalRef = useRef(null);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  useEffect(() => {
-    if (isMobile) {
-      intervalRef.current = setInterval(() => {
-        setActiveSlide((prev) => (prev + 1) % slides.length);
-      }, 3500);
-    }
-    return () => clearInterval(intervalRef.current);
-  }, [isMobile]);
 
   return (
-    <div className="hero-root">
-      {/* ── SIDEBAR ── */}
-      <aside className="hero-sidebar">
-        <div className="sidebar-free-badge">Free</div>
-        {sidebarItems.map((item, i) => (
-          <button key={i} className={`sidebar-btn${i === 0 ? " active" : ""}`}>
-            <img src={item.icon} alt={item.label} />
+    <div className="hero__page">
+      {/* SIDEBAR */}
+      <aside className="hero__sidebar">
+        {sidebarItems.map((item) => (
+          <button
+            key={item.id}
+            className={`hero__sidebar-item${item.active ? " hero__sidebar-item--active" : ""}`}
+            aria-label={item.label}
+          >
+            <img src={item.img} alt={item.label} />
           </button>
         ))}
       </aside>
 
-      {/* ── MAIN CONTENT ── */}
-      <div className="hero-content">
-        {/* Live drops bar */}
-        <div className="live-drops-bar">
-          <span className="live-dot-label">
-            <span className="live-dot" />
-            <span className="live-drops-text">Live drops</span>
-          </span>
-          <div className="drops-track">
-            {liveDrops.map((drop) => (
-              <div className="drop-item" key={drop.id}>
-                <img src={drop.img} alt="drop" className="drop-img" />
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* MAIN */}
+      <main className="hero__main">
+        <div className="hero__container">
 
-        {/* ── MOBILE SLIDER ── */}
-        {isMobile ? (
-          <div className="hero-slider">
-            <div
-              className="hero-slider-track"
-              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-            >
-              <MainPanel />
-              <ReferPanel />
-            </div>
-            <div className="slider-dots">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  className={`slider-dot${activeSlide === i ? " active" : ""}`}
-                  onClick={() => setActiveSlide(i)}
-                />
-              ))}
+          {/* LIVE DROPS — label above, slider starts immediately below */}
+          <div className="hero__drops-label">
+            <span className="hero__drops-dot" />
+            Live drops
+          </div>
+          <div className="hero__drops-track-wrap">
+            <div className="hero__drops-marquee">
+              <img src={drop1} alt="Live drops" className="hero__drops-img" />
+              <img src={drop1} alt="Live drops" className="hero__drops-img" aria-hidden="true" />
             </div>
           </div>
-        ) : (
-          /* ── DESKTOP / TABLET PANELS ── */
-          <div className="hero-panels">
-            <MainPanel />
-            <ReferPanel />
+
+          {/* HERO CARDS */}
+          <div
+            className="hero__cards"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            {/* Desktop */}
+            <div className="hero__cards-desktop">
+              <SignupCard />
+              <ReferCard />
+            </div>
+
+            {/* Mobile / Tablet slider */}
+            <div className="hero__cards-slider">
+              <div
+                className="hero__slider-track"
+                style={{ transform: `translateX(-${slideIndex * 100}%)` }}
+              >
+                <div className="hero__slide"><SignupCard /></div>
+                <div className="hero__slide"><ReferCard /></div>
+              </div>
+              <div className="hero__slider-dots">
+                {heroSlides.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`hero__dot${i === slideIndex ? " hero__dot--active" : ""}`}
+                    onClick={() => goToSlide(i)}
+                    aria-label={`Slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+
+        </div>
+      </main>
     </div>
   );
 }

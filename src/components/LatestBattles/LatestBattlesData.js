@@ -33,7 +33,7 @@ import avatar21 from "../../assets/latestbattles/lb-left-6-1.png";
 import avatar22 from "../../assets/latestbattles/lb-left-6-2.png";
 import avatar23 from "../../assets/latestbattles/lb-left-6-3.png";
 import avatar24 from "../../assets/latestbattles/lb-left-6-4.png";
-// Item Boxes
+
 // --- BOXES 1-6 ---
 import box1 from "../../assets/latestbattles/box-1.png";
 import box2 from "../../assets/latestbattles/box-2.png";
@@ -58,75 +58,76 @@ import box16 from "../../assets/latestbattles/box-16.png";
 import box17 from "../../assets/latestbattles/box-17.png";
 import box18 from "../../assets/latestbattles/box-18.png";
 
-// 2. EXPORT THE DATA ARRAY (10 Cards)
+import vsIcon from "../../assets/latestbattles/fencing.png";
+
 export const battlesData = [
   {
     id: 1,
     price: "390.00",
-    themeColor: "#1d6a3f", // Green
+    themeColor: "#1d6a3f",
     players: [avatar1, avatar2, avatar3, avatar4],
     items: [box1, box2, box1, box3, box4, box1, box5, box5],
   },
   {
     id: 2,
     price: "150.50",
-    themeColor: "#2b73ab", // Blue
+    themeColor: "#2b73ab",
     players: [avatar5, avatar6, avatar7, avatar8],
     items: [box6, box7, box8, box9, box10, box11, box12, box13],
   },
   {
     id: 3,
     price: "99.00",
-    themeColor: "#1d6a3f", // Green
+    themeColor: "#1d6a3f",
     players: [avatar9, avatar10, avatar11, avatar12],
     items: [box14, box2, box15, box3, box7, box16, box17, box5],
   },
   {
     id: 4,
     price: "420.00",
-    themeColor: "#2b73ab", // Blue
+    themeColor: "#2b73ab",
     players: [avatar13, avatar14, avatar15, avatar16],
     items: [box1, box16, box1, box3, box4, box8, box7, box5],
   },
   {
     id: 5,
     price: "75.00",
-    themeColor: "#1d6a3f", // Green
+    themeColor: "#1d6a3f",
     players: [avatar17, avatar18, avatar19, avatar20],
     items: [box18, box2, box7, box8, box18, box14, box5, box17],
   },
   {
     id: 6,
     price: "890.00",
-    themeColor: "#2b73ab", // Blue
+    themeColor: "#2b73ab",
     players: [avatar21, avatar22, avatar23, avatar24],
     items: [box1, box17, box14, box8, box4, box1, box7, box18],
   },
   {
     id: 7,
     price: "210.00",
-    themeColor: "#1d6a3f", // Green
+    themeColor: "#1d6a3f",
     players: [avatar17, avatar17, avatar18, avatar18],
     items: [box1, box1, box2, box2, box1],
   },
   {
     id: 8,
     price: "55.00",
-    themeColor: "#2b73ab", // Blue
+    themeColor: "#2b73ab",
     players: [avatar19, avatar19, avatar20, avatar20],
     items: [box2, box2, box1, box1],
   },
   {
     id: 9,
     price: "1200.00",
-    themeColor: "#1d6a3f", // Green
+    themeColor: "#1d6a3f",
     players: [avatar21, avatar22, avatar21, avatar22],
     items: [box1, box2, box1, box2, box1, box2, box1],
   },
   {
     id: 10,
     price: "340.00",
-    themeColor: "#2b73ab", // Blue
+    themeColor: "#2b73ab",
     players: [avatar23, avatar24, avatar23, avatar24],
     items: [box2, box1, box2, box1, box2, box1],
   },

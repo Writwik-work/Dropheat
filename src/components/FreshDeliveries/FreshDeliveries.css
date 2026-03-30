@@ -4,12 +4,12 @@
 .fresh {
   padding: 20px;
   color: #fff;
-  background: #16161b;
+  background: #000;
   font-family: Inter, system-ui, sans-serif;
 }
 .fd-section {
   display: flex;
-  background: #16161b;
+  background: #000;
 }
 
 
@@ -19,7 +19,8 @@
 .fd-sidebar {
   width: 52px;
   flex-shrink: 0;
-  border-right: 1px solid #16161b !important;
+  border-right: 1px solid #000 !important;
+  background: #000  !important;
   display: flex;
   flex-direction: column;
   align-items: center;

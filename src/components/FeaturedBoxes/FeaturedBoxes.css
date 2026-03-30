@@ -3,7 +3,7 @@
 
 .fb-section {
   width: 100%;
-  background: #16161b;
+  background: #000;
   display: flex;
   flex-direction: row;
   font-family: "Space Grotesk",sans-serif;
@@ -13,13 +13,13 @@
 .fb-sidebar {
   width: 56px;
   flex-shrink: 0;
-  background: #16161b;
+  background: #000;
   border-right: 1px solid rgba(255,255,255,.06);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px 0 16px;
-  gap: 0
+  gap: 20px
 }
 .fb-sidebar__top {
   display: flex;
@@ -41,12 +41,13 @@
   gap: 4px
 }
 .fb-sidebar__btn {
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
   border-radius: 9px;
   border: none;
   background: 0 0;
   color: rgba(255,255,255,.35);
+  background: #16161b;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -59,9 +60,16 @@
   background: rgba(255,255,255,.07);
   color: rgba(255,255,255,.85)
 }
-.fb-sidebar__btn svg {
-  width: 18px;
-  height: 18px
+.fb-sidebar__btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+/* optional hover like before */
+.fb-sidebar__btn:hover img {
+  filter: brightness(1.2);
 }
 .fb-body {
   flex: 1;
@@ -83,6 +91,12 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0
+}
+.fb-sidebar__btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: #9ca3af; /* 👈 THIS FIXES IT */
 }
 .header__icon {
   margin-top: 10px;

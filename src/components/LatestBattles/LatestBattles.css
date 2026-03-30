@@ -1,299 +1,273 @@
-.lb-section {
-  display: flex;
-  background: #16161b;
+.battles-container {
+  background-color: #000;
+  padding: 40px 20px;
   color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
-  align-items: flex-start;
+  font-family: Inter,sans-serif
 }
-
-/* ── SIDEBAR ── */
-.lb-sidebar {
-  width: 52px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+.battles-header {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  padding: 20px 0;
+  gap: 16px;
+  margin: 0 auto 20px auto;
+  width: 95%
 }
-
-.lb-sidebar__btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.lb-sidebar__btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.lb-sidebar__divider {
-  width: 28px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 10px 0;
-}
-
-.lb-sidebar__top,
-.lb-sidebar__bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* ── BODY ── */
-.lb-body {
-  flex: 1;
-  min-width: 0;
-  padding: 20px 16px;
-}
-
-/* ── HEADER ── */
-.lb-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-
-.lb-title-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.lb-title-group h2 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.lb-view-all {
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  padding: 8px 18px;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'Space Grotesk', sans-serif;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
-
-.lb-view-all:hover {
-  background: rgba(255, 255, 255, 0.13);
-}
-
-/* ── CARD LIST ── */
-.lb-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* ── CARD — DESKTOP: single row [players | boxes | actions] ── */
-.lb-card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  background: #1a1a20;
-  border-radius: 14px;
-  padding: 10px 16px;
-  overflow: hidden;
-}
-
-/* ── BOTTOM ROW — display:contents on desktop so children join card flex row ── */
-.lb-bottom-row {
-  display: contents;
-}
-.lb-players {
-  flex-shrink: 0;
-  background: #29292f;
-  padding: 10px 14px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  order: -1;
-}
-
-.lb-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-left: -12px;
-}
-
-.lb-avatar:first-child {
-  margin-left: 0;
-}
-
-.lb-vs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 6px;
-  flex-shrink: 0;
-}
-
-/* ── BOXES — fills all remaining space ── */
-.lb-items {
-  flex: 1;
-  min-width: 0;
+.header-title {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  background: linear-gradient(#161822, #161822) padding-box,
-    linear-gradient(90deg, #39ff88, transparent) border-box;
-  overflow-x: auto;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
+font-family: Space Grotesk;
+font-weight: 700;
+font-size: 15px;
+line-height: 100%;
+letter-spacing: -2%;
 }
-
-.lb-items::-webkit-scrollbar {
-  display: none;
+.view-all-btn {
+  background: #2a2e3d;
+  border: none;
+  color: #94a3b8;
+  padding: 13px 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 600;
+  transition: background .2s
 }
-
-.lb-item-box {
-  flex-shrink: 0;
-  scroll-snap-align: start;
+.view-all-btn:hover {
+  background: #363a4d
 }
-
-.lb-item-box img {
-  width: 100px;
-  height: auto;
-  display: block;
-  object-fit: contain;
+.battle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 95%;
+  margin: 0 auto
 }
-
-.lb-end-space {
-  min-width: 20px;
-}
-
-/* ── ACTIONS ── */
-.lb-actions {
-  flex-shrink: 0;
+.battle-row {
+  background: #1a1a20;
+  border-radius: 12px;
+  height: 113px;
+  padding: 16px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 20px;
+  border: 1px solid transparent;
+  transition: border .3s ease
+}
+.battle-row:hover {
+  border-color: #334155
+}
+.players-box {
+  background: #29292f;
+  padding: 18px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+.avatar-group {
+  display: flex
+}
+.avatar-group img {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  border: 2px solid #161922;
+  margin-left: -8px
+}
+.avatar-group img:first-child {
+  margin-left: 0
+}
+.vs-divider img {
+  width: 24px;
+  height: 24px
+}
+.vs {
+  width: 24px;
+  height: 24px;
+  min-width: 24px; /* prevents shrinking */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.lb-price {
-  font-weight: 700;
-  font-size: 18px;
-  white-space: nowrap;
+.vs img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* IMPORTANT */
+}
+.items-display {
+  flex: 1;
+  display: flex;
+  gap: 15px;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(#0f111a,#0f111a) padding-box,linear-gradient(90deg,#39ff88,transparent 40%),linear-gradient(270deg,#39ff88,transparent 30%);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none
+}
+.items-display::-webkit-scrollbar {
+  display: none
+}
+.item-box {
+  width: 108px;
+  flex-shrink: 0
+}
+.item-box img {
+  width: 100%;
+  height: auto;
+  display: block
+}
+.action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px
+}
+.price-value {
+font-family: Space Grotesk;
+font-weight: 700;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: -2%;
+}
+.price-decimal {
+  color: #676778;
+  font-family: Space Grotesk;
+font-weight: 700;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: -2%;
+}
+.open-case-btn {
+  background: #6366f1;
   color: #fff;
-}
-
-.lb-btn-open {
-  padding: 12px 24px;
-  background: linear-gradient(180deg, #7848ff, #6254ff);
   border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 14px;
+  padding: 10px 24px;
+  border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
-  font-family: 'Space Grotesk', sans-serif;
-  white-space: nowrap;
-  transition: transform 0.2s ease, opacity 0.2s;
+  width: 100%;
+  transition: transform .1s
 }
-
-.lb-btn-open:hover {
-  transform: scale(1.03);
-  opacity: 0.92;
+.open-case-btn:active {
+  transform: scale(.96)
 }
-
-/* ── 1024px ── */
-@media (max-width: 1024px) {
-  .lb-item-box img {
-    width: 80px;
-  }
-
-  .lb-avatar {
-    width: 40px;
-    height: 40px;
-  }
-
-  .lb-price {
-    font-size: 16px;
-  }
-
-  .lb-btn-open {
-    font-size: 13px;
-    padding: 10px 18px;
+@media (max-width:1024px) {
+  .battle-row {
+    gap: 12px
   }
 }
-
-/* ── MOBILE — two rows: [boxes] / [players  price  btn] ── */
-@media (max-width: 768px) {
-  .lb-sidebar {
-    display: none;
-  }
-
-  .lb-card {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+@media (max-width:768px) {
+  .battle-row {
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto;
+    grid-template-rows: auto auto;
     padding: 12px;
-    background: #161822;
+    row-gap: 12px;
+    column-gap: 10px;
+    height: auto;
+    min-width: 0
   }
-
-  /* boxes full width on top */
-  .lb-items {
-    width: 100%;
+  .items-display {
+    grid-column: 1/-1;
+    grid-row: 1;
     padding: 10px;
-    gap: 8px;
+    max-height: 90px
+  }
+  .players-box {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 6px 10px;
+    gap: 6px;
+    overflow: hidden
+  }
+  .avatar-group img {
+    width: 28px;
+    height: 28px
+  }
+  .action-area {
+    grid-column: 3;
+    grid-row: 2;
+    flex-direction: row;
+    gap: 10px
+  }
+  .price-value {
+    font-size: 1rem
+  }
+  .price-decimal {
+    font-size: .75rem
+  }
+  .open-case-btn {
+    width: auto;
+    padding: 8px 16px;
+    font-size: .9rem;
+    border-radius: 10px;
+    white-space: nowrap
+  }
+  .item-box {
+  width: 57px;
+  flex-shrink: 0
+}
+}
+@media (max-width: 425px) {
+  .battle-row {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    row-gap: 10px;
+  }
+.item-box {
+  width: 57px;
+  flex-shrink: 0
+}
+  /* ITEMS (top row) */
+  .items-display {
+    grid-column: 1 / -1;
+    grid-row: 1;
   }
 
-  .lb-item-box img {
-    width: 76px;
+  /* PLAYERS (left) */
+  .players-box {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 6px 8px;
+    gap: 6px;
+    max-width: 100%;
   }
 
-  /* bottom row becomes a real flex row with players+actions */
-  .lb-bottom-row {
+  .avatar-group img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ACTION (price + button together on right) */
+  .action-area {
+    grid-column: 3;
+    grid-row: 2;
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 100%;
+    gap: 6px; /* tighter gap */
   }
 
-  .lb-players {
-    width: fit-content;
-    padding: 8px 10px;
+  /* PRICE closer to button */
+  .price-value {
+    font-size: 0.95rem;
+    white-space: nowrap;
   }
 
-  .lb-avatar {
-    width: 40px;
-    height: 40px;
-    margin-left: -10px;
+  .price-decimal {
+    font-size: 0.7rem;
   }
 
-  .lb-actions {
-    margin-left: auto;
-    gap: 10px;
-  }
-
-  .lb-price {
-    font-size: 17px;
-  }
-
-  .lb-btn-open {
-    padding: 10px 18px;
-    font-size: 13px;
+  /* BUTTON */
+  .open-case-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
   }
 }

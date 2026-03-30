@@ -1,87 +1,98 @@
 import React, { useState } from 'react';
-import './LatestBattles.css';
 import { battlesData } from './LatestBattlesData';
+import './LatestBattles.css';
 
-/* SIDEBAR */
-function LbSidebar() {
-  return (
-    <aside className="lb-sidebar">
-      <div className="lb-sidebar__top">
-        <button className="lb-sidebar__btn">⚡</button>
-        <button className="lb-sidebar__btn">💬</button>
-        <button className="lb-sidebar__btn">❓</button>
-        <button className="lb-sidebar__btn">📊</button>
-      </div>
-      <div className="lb-sidebar__divider" />
-      <div className="lb-sidebar__bottom">
-        <button className="lb-sidebar__btn">𝕏</button>
-        <button className="lb-sidebar__btn">📸</button>
-        <button className="lb-sidebar__btn">🎵</button>
-        <button className="lb-sidebar__btn">▶</button>
-      </div>
-    </aside>
-  );
-}
+// ✅ Import your image
+import fencingIcon from "../../assets/latestbattles/fencing.png";
+import fencingTitle from "../../assets/latestbattles/fencing-title.png";
 
-export default function LatestBattles() {
+const LatestBattles = () => {
   const [showAll, setShowAll] = useState(false);
-  const displayedBattles = showAll ? battlesData : battlesData.slice(0, 6);
+
+  // Price formatter
+  const renderPrice = (priceStr) => {
+    const [whole, decimal] = priceStr.split('.');
+    return (
+      <div className="price-value">
+        ${whole}
+        <span className="price-decimal">.{decimal || '00'}</span>
+      </div>
+    );
+  };
+
+  // ✅ Control visible cards
+  const visibleBattles = showAll
+    ? battlesData.slice(0, 10)
+    : battlesData.slice(0, 6);
 
   return (
-    <section className="lb-section">
-      <LbSidebar />
+    <div className="battles-container">
+      {/* Header */}
+      <div className="battles-header">
+       <div className="header-title">
+  <div className="vs">
+    <img src={fencingTitle} alt="vs" />
+  </div>
+  <span>Latest Battles</span>
+</div>
 
-      <div className="lb-body">
-
-        {/* HEADER */}
-        <div className="lb-header">
-          <div className="lb-title-group">
-            <span className="lb-icon">⚔️</span>
-            <h2>Latest Battles</h2>
-          </div>
-          <button className="lb-view-all" onClick={() => setShowAll(!showAll)}>
-            {showAll ? 'View Less' : 'View All'}
-          </button>
-        </div>
-
-        {/* LIST */}
-        <div className="lb-list">
-          {displayedBattles.map((battle) => (
-            <div className="lb-card" key={battle.id}>
-
-              {/* BOXES — middle, fills remaining space */}
-              <div className="lb-items">
-                {battle.items.map((itemImg, idx) => (
-                  <div className="lb-item-box" key={idx}>
-                    <img src={itemImg} alt="" />
-                  </div>
-                ))}
-                <div className="lb-end-space" />
-              </div>
-
-              {/* BOTTOM ROW on mobile / inline on desktop */}
-              <div className="lb-bottom-row">
-                {/* PLAYERS */}
-                <div className="lb-players">
-                  <img src={battle.players[0]} className="lb-avatar" alt="" />
-                  <img src={battle.players[1]} className="lb-avatar" alt="" />
-                  <div className="lb-vs">⚔️</div>
-                  <img src={battle.players[2]} className="lb-avatar" alt="" />
-                  <img src={battle.players[3]} className="lb-avatar" alt="" />
-                </div>
-
-                {/* ACTIONS */}
-                <div className="lb-actions">
-                  <span className="lb-price">${battle.price}</span>
-                  <button className="lb-btn-open">Open case</button>
-                </div>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
+        {/* Toggle Button */}
+        <button
+          className="view-all-btn"
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? "View Less" : "View All"}
+        </button>
       </div>
-    </section>
+
+      <div className="battle-list">
+        {visibleBattles.map((battle) => (
+          <div key={battle.id} className="battle-row">
+
+            {/* Players */}
+            <div className="players-box">
+              <div className="avatar-group">
+                <img src={battle.players[0]} alt="p1" />
+                <img src={battle.players[1]} alt="p2" />
+              </div>
+
+              {/* ✅ UPDATED ICON */}
+              <div className="vs-divider">
+                <img src={fencingIcon} alt="vs" />
+              </div>
+
+              <div className="avatar-group">
+                <img src={battle.players[2]} alt="p3" />
+                <img src={battle.players[3]} alt="p4" />
+              </div>
+            </div>
+
+            {/* Items */}
+            <div
+              className="items-display"
+              style={{
+                backgroundColor: `${battle.themeColor}22`,
+                border: `1px solid ${battle.themeColor}66`
+              }}
+            >
+              {battle.items.map((box, index) => (
+                <div key={index} className="item-box">
+                  <img src={box} alt="case" />
+                </div>
+              ))}
+            </div>
+
+            {/* Action */}
+            <div className="action-area">
+              {renderPrice(battle.price)}
+              <button className="open-case-btn">Open case</button>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default LatestBattles;

@@ -71,11 +71,18 @@ const Navbar = () => {
     <>
       <header className="navbar">
         <div className="navbar__container">
-          
           {/* LEFT */}
           <div className="navbar__left">
-            <img src={logoImg} alt="Desktop Logo" className="navbar__logo desktop-only" />
-            <img src={logoMobileImg} alt="Mobile Logo" className="navbar__logo mobile-only" />
+            <img
+              src={logoImg}
+              alt="Desktop Logo"
+              className="navbar__logo desktop-only"
+            />
+            <img
+              src={logoMobileImg}
+              alt="Mobile Logo"
+              className="navbar__logo mobile-only"
+            />
           </div>
 
           {/* CENTER */}
@@ -126,13 +133,23 @@ const Navbar = () => {
       {/* ================= CHAT PANEL ================= */}
       {chatOpen && (
         <aside className="chat-panel">
-
           {/* HEADER */}
           <div className="chat-panel__header">
             <span className="chat-title">Chat</span>
-            <div className="chat-status">
-              <span className="online-dot"></span>
-              <span>12,490</span>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div className="chat-status">
+                <span className="online-dot"></span>
+                <span>12,490</span>
+              </div>
+
+              {/* ✅ NEW CLOSE BUTTON */}
+              <button
+                className="chat-close-btn"
+                onClick={() => setChatOpen(false)}
+              >
+                ✕
+              </button>
             </div>
           </div>
 
@@ -168,7 +185,6 @@ const Navbar = () => {
               ➤
             </button>
           </div>
-
         </aside>
       )}
     </>

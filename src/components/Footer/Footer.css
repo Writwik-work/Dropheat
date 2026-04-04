@@ -1,23 +1,13 @@
-/* ========================= */
-/* BASE / DESKTOP (>1024px)  */
-/* ========================= */
 .footer {
-  padding: 20px;
+  padding: 60px 20px 0;
   width: 100%;
-  box-sizing: border-box;
+  box-sizing: border-box
 }
-/* =========================================
-   SECTION WRAPPER
-========================================= */
 .footer-section {
   display: flex;
   align-items: flex-start;
-   background: #000;
+  background: #000
 }
-
-/* =========================================
-   SIDEBAR (REUSED)
-========================================= */
 .fd-sidebar {
   width: 52px;
   flex-shrink: 0;
@@ -26,182 +16,145 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 0
 }
-
 .fd-sidebar__btn {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: transparent;
+  background: 0 0;
   border: none;
   color: rgba(255,255,255,.4);
-  cursor: pointer;
+  cursor: pointer
 }
-
 .fd-sidebar__btn:hover {
   background: rgba(255,255,255,.08);
-  color: #fff;
+  color: #fff
 }
-
 .fd-sidebar__divider {
   width: 28px;
   height: 1px;
   background: rgba(255,255,255,.08);
-  margin: 10px 0;
+  margin: 10px 0
 }
-
-.fd-sidebar__top,
-.fd-sidebar__bottom {
-display: none;
+.fd-sidebar__bottom,
+.fd-sidebar__top {
+  display: none
 }
-
-/* =========================================
-   BODY
-========================================= */
 .footer-body {
   flex: 1;
-  min-width: 0;
+  min-width: 0
 }
-
 .footer-inner {
   background: #1a1a20;
-  border-radius: 14px;
+  border-radius: 8px;
   padding: 16px 20px;
-  
-  /* Default Desktop Layout */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 24px
 }
-
-/* LEFT */
 .footer-left {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 0
 }
-
 .footer-left img {
   height: 24px;
-  object-fit: contain;
+  object-fit: contain
 }
-
-/* CENTER LINKS */
 .footer-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px 24px;
-  flex: 1;
+  flex: 1
 }
-
 .footer-links a {
   color: #676778;
-font-family: IBM Plex Sans;
-font-weight: 500;
-font-size: 15px;
-line-height: 20px;
-letter-spacing: -2%;
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -2%;
   text-decoration: none;
   display: flex;
   align-items: center;
-  transition: color 0.2s ease;
+  transition: color .2s ease
 }
-
 .footer-links a:hover {
-  color: #ffffff;
+  color: #fff
 }
-
-/* bullet dot */
 .footer-links a::before {
   content: "•";
   margin-right: 8px;
   color: #5a5f73;
-  font-size: 16px;
+  font-size: 16px
 }
-
-/* RIGHT */
 .footer-right {
   display: flex;
   gap: 10px;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 0
 }
-
 .footer-right img {
   width: 18px;
   height: 18px;
   box-sizing: content-box;
   border-radius: 8px;
-  background: #1d1f2b;
+  background: #29292f;
   padding: 10px;
   object-fit: contain;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background .2s ease
 }
-
 .footer-right img:hover {
-  background: #2a2c38;
+  background: #2a2c38
 }
-
-/* ========================= */
-/* 💻 TABLET (<1024px)       */
-/* ========================= */
-@media (max-width: 1024px) {
+@media (max-width:1024px) {
   .footer-inner {
-    /* Switch to Grid to push Stars/Socials to the top row */
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas: 
-      "stars socials"
-      "links links";
+    grid-template-areas: "stars socials" "links links";
     gap: 24px 16px;
-    padding: 20px;
+    padding: 20px
   }
-
   .footer-left {
     grid-area: stars;
-    justify-content: flex-start;
+    justify-content: flex-start
   }
-
   .footer-right {
     grid-area: socials;
-    justify-content: flex-end;
+    justify-content: flex-end
   }
-
   .footer-links {
     grid-area: links;
-    justify-content: flex-start;
+    justify-content: flex-start
   }
 }
-
-/* ========================= */
-/* 📱 MOBILE (<768px)        */
-/* ========================= */
-@media (max-width: 768px) {
+@media (max-width:768px) {
+  .footer {
+    padding: 42px 0 0
+  }
   .footer-left img {
-    height: 20px; /* Slightly smaller stars on mobile */
+    height: 20px
   }
-
   .footer-right {
-    gap: 8px; /* Tighter spacing on socials */
+    gap: 8px
   }
-
   .footer-right img {
     width: 16px;
     height: 16px;
-    padding: 8px;
+    padding: 8px
   }
-
   .footer-links {
-    /* Create the neat columns seen in the screenshot */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 16px 8px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px 4px;
+    width: 100%
   }
   .footer-links a {
-font-size: 14px;
-}
+    font-size: 14px;
+    white-space: nowrap
+  }
 }

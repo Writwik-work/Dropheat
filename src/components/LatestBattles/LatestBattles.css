@@ -1,6 +1,6 @@
 .battles-container {
   background-color: #000;
-  padding: 40px 20px;
+  padding: 20px 0px 20px 50px;
   color: #fff;
   font-family: Inter,sans-serif
 }
@@ -23,14 +23,14 @@ line-height: 100%;
 letter-spacing: -2%;
 }
 .view-all-btn {
-  background: #2a2e3d;
+  background: #363640;
   border: none;
-  color: #94a3b8;
+  color: #cbcbdd;
   padding: 13px 13px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: .85rem;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   transition: background .2s
 }
 .view-all-btn:hover {
@@ -40,7 +40,7 @@ letter-spacing: -2%;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 95%;
+  width: 97%;
   margin: 0 auto
 }
 .battle-row {
@@ -100,17 +100,49 @@ letter-spacing: -2%;
 .items-display {
   flex: 1;
   display: flex;
+  justify-content: space-around;
   gap: 15px;
   padding: 5px 20px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  background: linear-gradient(#0f111a,#0f111a) padding-box,linear-gradient(90deg,#39ff88,transparent 40%),linear-gradient(270deg,#39ff88,transparent 30%);
+  
+  /* 1. We remove the old transparent border and use position relative */
+  position: relative;
+  
+  /* 2. ONLY the 5% green tint goes here. It will naturally blend with the battle-row behind it! */
+  /* background-color: rgba(41, 136, 82, 0.05);  */
+  border-radius: 8px;
+
+  /* Scroll logic stays the same */
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-width: none
+  scrollbar-width: none;
 }
+
+/* 3. The magic border layer */
+.items-display::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Stretches exactly to the parent's edges */
+  border-radius: 8px; /* Must match the parent */
+  padding: 1px; /* This acts as your 1px border width */
+
+  /* Your exact gradients from Figma */
+  background: 
+    linear-gradient(90deg, #39FF88 -2.07%, rgba(34, 153, 82, 0) 38.17%),
+    linear-gradient(270deg, #39FF88 0%, rgba(34, 153, 82, 0) 24.85%);
+
+  /* This mask "hollows out" the middle so the gradient ONLY shows on the 1px padding */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* Ensures the border doesn't block you from clicking the items inside */
+  pointer-events: none; 
+}
+
 .items-display::-webkit-scrollbar {
-  display: none
+  display: none;
 }
 .item-box {
   width: 108px;
@@ -163,6 +195,9 @@ letter-spacing: -2%;
   }
 }
 @media (max-width:768px) {
+  .battles-container {
+  padding: 16px 0px;
+}
   .battle-row {
     display: grid;
     grid-template-columns: auto minmax(0,1fr) auto;
@@ -182,13 +217,15 @@ letter-spacing: -2%;
   .players-box {
     grid-column: 1;
     grid-row: 2;
-    padding: 6px 10px;
+    padding: 4px 2px;
     gap: 6px;
-    overflow: hidden
   }
   .avatar-group img {
-    width: 28px;
-    height: 28px
+    width: 35px;
+    height: 35px
+  }
+  .view-all-btn {
+    font-size: 12px;
   }
   .action-area {
     grid-column: 3;
@@ -205,7 +242,7 @@ letter-spacing: -2%;
   .open-case-btn {
     width: auto;
     padding: 8px 16px;
-    font-size: .9rem;
+    font-size: 14px;
     border-radius: 10px;
     white-space: nowrap
   }
@@ -235,14 +272,14 @@ letter-spacing: -2%;
   .players-box {
     grid-column: 1;
     grid-row: 2;
-    padding: 6px 8px;
+    padding: 4px 2px;
     gap: 6px;
     max-width: 100%;
   }
 
   .avatar-group img {
-    width: 24px;
-    height: 24px;
+    width: 35px;
+    height: 35px;
   }
 
   /* ACTION (price + button together on right) */
@@ -266,8 +303,7 @@ letter-spacing: -2%;
 
   /* BUTTON */
   .open-case-btn {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    font-size: 14px;
     border-radius: 8px;
   }
 }

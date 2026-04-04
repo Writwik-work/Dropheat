@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,500,600,700);
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,600,700);
-
 .fb-section {
   width: 100%;
   background: #000;
@@ -25,7 +24,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 25px
 }
 .fb-sidebar__divider {
   width: 28px;
@@ -45,9 +44,8 @@
   height: 50px;
   border-radius: 9px;
   border: none;
-  background: 0 0;
-  color: rgba(255,255,255,.35);
   background: #16161b;
+  color: rgba(255,255,255,.35);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -64,17 +62,21 @@
   width: 40px;
   height: 40px;
   object-fit: contain;
-  display: block;
+  display: block
 }
-
-/* optional hover like before */
 .fb-sidebar__btn:hover img {
-  filter: brightness(1.2);
+  filter: brightness(1.2)
+}
+.fb-sidebar__btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: #9ca3af
 }
 .fb-body {
   flex: 1;
   min-width: 0;
-  padding: 20px 16px 32px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 16px
@@ -83,8 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap
+  gap: 16px
 }
 .fb-header__title {
   display: flex;
@@ -92,14 +93,8 @@
   gap: 10px;
   flex-shrink: 0
 }
-.fb-sidebar__btn svg {
-  width: 20px;
-  height: 20px;
-  display: block;
-  color: #9ca3af; /* 👈 THIS FIXES IT */
-}
 .header__icon {
-  margin-top: 10px;
+  margin-top: 10px
 }
 .fb-header__icon {
   width: 24px;
@@ -195,7 +190,7 @@
   margin: 0;
   padding: 4px;
   z-index: 100;
-  min-width: 130px
+  min-width: 160px
 }
 .fb-sort__option {
   display: block;
@@ -250,6 +245,10 @@
   padding: 8px 12px 4px;
   height: 155px
 }
+.box-card__img::before {
+background: #2e2e38;
+    backdrop-filter: blur(38.350093841552734px);
+}
 .box-card__img {
   max-width: 100%;
   max-height: 100%;
@@ -261,21 +260,18 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
+  justify-content: space-between;
   flex: 1
 }
-
-/* 👇 SHIFTED THE MARGIN FIX HERE 👇 */
 .box-card__name {
-  font-family: Space Grotesk;
+  font-family: "Space Grotesk",sans-serif;
   font-weight: 700;
-  font-style: Bold;
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: -2%;
+  letter-spacing: -.02em;
   color: #fff;
-  margin: auto 0 0 0; /* Forces the text block to the bottom perfectly */
+  margin: 0
 }
-
 .box-card__tags {
   display: flex;
   gap: 5px;
@@ -283,73 +279,75 @@
 }
 .box-card__tag {
   background: #29292f;
-  border: 1px solid var(--Shade-4,#363640);
+  border: 1px solid #363640;
   border-radius: 6px;
   color: #a3a3b7;
-  font-family: IBM Plex Sans;
+  font-family: "IBM Plex Sans",sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -2%;
+  letter-spacing: -.02em;
   padding: 2px 9px
 }
-
-/* 👇 RESTORED TO ZERO 👇 */
 .box-card__price {
-  font-family: Space Grotesk;
+  font-family: "Space Grotesk",sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: -2%;
+  letter-spacing: -.02em;
   color: #fff;
-  margin: 0; 
+  margin: 0
 }
-
 .box-card__price-cents {
-  font-family: Space Grotesk;
+  font-family: "Space Grotesk",sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: -2%;
+  letter-spacing: -.02em;
   color: #676778
 }
 .box-card__actions {
   display: flex;
   gap: 8px;
-  margin-top: 4px
+  margin-top: auto;
+  width: 100%;
+  overflow: hidden
 }
 .btn-open {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   background: linear-gradient(180deg,#7848ff 0,#6254ff 100%);
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 12px;
-  font-family: Space Grotesk;
+  padding: 10px 3px;
+  font-family: "Space Grotesk",sans-serif;
   font-weight: 700;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: -2%;
+  letter-spacing: -.02em;
   cursor: pointer;
   transition: background .18s,transform .15s;
-  white-space: nowrap
+  white-space: nowrap;
+  text-overflow: ellipsis
 }
 .btn-open:hover {
   background: #6d28d9;
   transform: translateY(-1px)
 }
 .btn-info {
-  background: var(--Shade-4,#363640);
+  flex: 0 0 auto;
+  background: #363640;
   color: rgba(255,255,255,.7);
   border: 1px solid rgba(255,255,255,.1);
   border-radius: 8px;
   padding: 12px;
-  font-family: Space Grotesk;
+  font-family: "Space Grotesk",sans-serif;
   font-weight: 700;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: -2%;
-  max-width: 76px;
+  letter-spacing: -.02em;
+  max-width: 70px;
   cursor: pointer;
   transition: background .18s,color .18s;
   white-space: nowrap
@@ -358,15 +356,21 @@
   background: rgba(255,255,255,.13);
   color: #fff
 }
+.title-desktop {
+  display: inline
+}
+.title-mobile {
+  display: none
+}
 .badge {
   display: inline-flex;
   align-items: center;
   border-radius: 4px;
-  font-family: Space Grotesk;
+  font-family: "Space Grotesk",sans-serif;
   font-weight: 700;
   font-size: 15px;
   line-height: 100%;
-  letter-spacing: -2%;
+  letter-spacing: -.02em;
   padding: 8px
 }
 .badge--new {
@@ -400,28 +404,37 @@
   .fb-body {
     padding: 16px 12px 28px
   }
-  .fb-grid {
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px
-  }
   .fb-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px
+    flex-wrap: wrap;
+    gap: 12px
+  }
+  .fb-header__title {
+    order: 1;
+    flex: 1 1 auto
+  }
+  .fb-sort {
+    order: 2;
+    flex: 0 0 auto;
+    margin-left: auto
   }
   .fb-header__tabs {
-    width: 100%;
+    order: 3;
+    width: 75%;
     justify-content: space-between
   }
   .fb-tab {
     flex: 1;
     text-align: center;
     padding: 7px 8px;
-    font-size: 12px
+    font-size: 12px;
+    border-radius: 12px
   }
-  .fb-sort {
-    width: 100%;
-    justify-content: flex-end
+  .fb-sort__label {
+    display: none
+  }
+  .fb-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px
   }
   .box-card__img-wrap {
     height: 120px
@@ -432,10 +445,31 @@
   .box-card__price {
     font-size: 15px
   }
+  .box-card__price-cents {
+    font-size: 12px;
+  }
+  .box-card__tag {
+    font-size: 12px
+  }
+  .box-card__tags {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
   .btn-info,
   .btn-open {
     font-size: 12px;
-    padding: 8px 8px
+    padding: 8px
+  }
+  .title-desktop {
+    display: none
+  }
+  .title-mobile {
+    display: inline
+  }
+  .badge {
+    font-size: 10px;
+    padding: 4px 6px;
+    border-radius: 4px
   }
 }
 @media (max-width:480px) {

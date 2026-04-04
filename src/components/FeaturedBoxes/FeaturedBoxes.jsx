@@ -22,17 +22,15 @@ import sectionIcon from "../../assets/feautred-boxes/fb-header-icon.png";
 ───────────────────────────────────────── */
 const TABS = ["Featured Boxes", "New Boxes", "Top Boxes"];
 
-// Updated Sort Options
 const SORT_OPTIONS = [
   "Default",
-  "Price: Low to High", 
-  "Price: High to Low", 
-  "Name: A-Z", 
-  "Popularity", 
-  "New Arrival"
+  "Price: Low to High",
+  "Price: High to Low",
+  "Name: A-Z",
+  "Popularity",
+  "New Arrival",
 ];
 
-// 1. Featured Tab Data 
 const FEATURED_BOXES = [
   { id: 1,  name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 390, img: box1, badges: ["New","Hot","Popular"], btnLabel: "Open case" },
   { id: 2,  name: "Card Trader",     tags: ["Streetwear","Watches"], price: 50,  img: box2, badges: ["Popular"],             btnLabel: "Open Box"  },
@@ -46,65 +44,34 @@ const FEATURED_BOXES = [
   { id: 10, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 390, img: box5, badges: ["New"],                 btnLabel: "Open case" },
 ];
 
-// 2. New Boxes Tab Data 
 const NEW_BOXES = [
-  { id: 11, name: "Sneaker Head",    tags: ["Shoes", "Apparel"],     price: 15,  img: box3, badges: ["New"],                 btnLabel: "Open Box"  },
-  { id: 12, name: "Mystery Tech",    tags: ["Electronics"],          price: 25,  img: box5, badges: ["New", "Hot"],          btnLabel: "Open Box"  },
-  { id: 13, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 10,  img: box2, badges: ["New"],                 btnLabel: "Open Box"  },
-  { id: 14, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 100, img: box1, badges: ["New"],                 btnLabel: "Open case" },
-  { id: 15, name: "Hype Beast",      tags: ["Streetwear","Watches"], price: 45,  img: box4, badges: ["New"],                 btnLabel: "Open Box"  },
-  { id: 16, name: "Sneaker Head",    tags: ["Shoes", "Apparel"],     price: 15,  img: box3, badges: ["New"],                 btnLabel: "Open Box"  },
-  { id: 17, name: "Mystery Tech",    tags: ["Electronics"],          price: 25,  img: box5, badges: ["New"],                 btnLabel: "Open Box"  },
-  { id: 18, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 10,  img: box2, badges: ["New", "Popular"],      btnLabel: "Open Box"  },
-  { id: 19, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 100, img: box1, badges: ["New"],                 btnLabel: "Open case" },
-  { id: 20, name: "Hype Beast",      tags: ["Streetwear","Watches"], price: 45,  img: box4, badges: ["New"],                 btnLabel: "Open Box"  },
+  { id: 11, name: "Sneaker Head",    tags: ["Shoes", "Apparel"],     price: 15,  img: box3, badges: ["New"],            btnLabel: "Open Box"  },
+  { id: 12, name: "Mystery Tech",    tags: ["Electronics"],          price: 25,  img: box5, badges: ["New", "Hot"],     btnLabel: "Open Box"  },
+  { id: 13, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 10,  img: box2, badges: ["New"],            btnLabel: "Open Box"  },
+  { id: 14, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 100, img: box1, badges: ["New"],            btnLabel: "Open case" },
+  { id: 15, name: "Hype Beast",      tags: ["Streetwear","Watches"], price: 45,  img: box4, badges: ["New"],            btnLabel: "Open Box"  },
+  { id: 16, name: "Sneaker Head",    tags: ["Shoes", "Apparel"],     price: 15,  img: box3, badges: ["New"],            btnLabel: "Open Box"  },
+  { id: 17, name: "Mystery Tech",    tags: ["Electronics"],          price: 25,  img: box5, badges: ["New"],            btnLabel: "Open Box"  },
+  { id: 18, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 10,  img: box2, badges: ["New","Popular"],  btnLabel: "Open Box"  },
+  { id: 19, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 100, img: box1, badges: ["New"],            btnLabel: "Open case" },
+  { id: 20, name: "Hype Beast",      tags: ["Streetwear","Watches"], price: 45,  img: box4, badges: ["New"],            btnLabel: "Open Box"  },
 ];
 
-// 3. Top Boxes Tab Data 
 const TOP_BOXES = [
-  { id: 21, name: "Luxury Vault",    tags: ["Watches", "Jewelry"],   price: 999, img: box4, badges: ["Popular", "Hot"],      btnLabel: "Open Box"  },
-  { id: 22, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 750, img: box1, badges: ["Popular"],             btnLabel: "Open case" },
-  { id: 23, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 500, img: box2, badges: ["Popular"],             btnLabel: "Open Box"  },
-  { id: 24, name: "High Roller",     tags: ["Exclusive"],            price: 1500,img: box5, badges: ["Popular", "Hot"],      btnLabel: "Open Box"  },
-  { id: 25, name: "Sneaker Grail",   tags: ["Shoes", "Apparel"],     price: 850, img: box3, badges: ["Popular"],             btnLabel: "Open Box"  },
-  { id: 26, name: "Luxury Vault",    tags: ["Watches", "Jewelry"],   price: 999, img: box4, badges: ["Popular"],             btnLabel: "Open Box"  },
-  { id: 27, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 750, img: box1, badges: ["Popular", "Hot"],      btnLabel: "Open case" },
-  { id: 28, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 500, img: box2, badges: ["Popular"],             btnLabel: "Open Box"  },
-  { id: 29, name: "High Roller",     tags: ["Exclusive"],            price: 1500,img: box5, badges: ["Popular"],             btnLabel: "Open Box"  },
-  { id: 30, name: "Sneaker Grail",   tags: ["Shoes", "Apparel"],     price: 850, img: box3, badges: ["Popular"],             btnLabel: "Open Box"  },
+  { id: 21, name: "Luxury Vault",    tags: ["Watches","Jewelry"],    price: 999,  img: box4, badges: ["Popular","Hot"], btnLabel: "Open Box"  },
+  { id: 22, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 750,  img: box1, badges: ["Popular"],      btnLabel: "Open case" },
+  { id: 23, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 500,  img: box2, badges: ["Popular"],      btnLabel: "Open Box"  },
+  { id: 24, name: "High Roller",     tags: ["Exclusive"],            price: 1500, img: box5, badges: ["Popular","Hot"],btnLabel: "Open Box"  },
+  { id: 25, name: "Sneaker Grail",   tags: ["Shoes","Apparel"],      price: 850,  img: box3, badges: ["Popular"],      btnLabel: "Open Box"  },
+  { id: 26, name: "Luxury Vault",    tags: ["Watches","Jewelry"],    price: 999,  img: box4, badges: ["Popular"],      btnLabel: "Open Box"  },
+  { id: 27, name: "Crazy Designers", tags: ["Streetwear","Watches"], price: 750,  img: box1, badges: ["Popular","Hot"],btnLabel: "Open case" },
+  { id: 28, name: "Card Trader",     tags: ["Streetwear","Watches"], price: 500,  img: box2, badges: ["Popular"],      btnLabel: "Open Box"  },
+  { id: 29, name: "High Roller",     tags: ["Exclusive"],            price: 1500, img: box5, badges: ["Popular"],      btnLabel: "Open Box"  },
+  { id: 30, name: "Sneaker Grail",   tags: ["Shoes","Apparel"],      price: 850,  img: box3, badges: ["Popular"],      btnLabel: "Open Box"  },
 ];
 
 const BADGE_CLASS = { New: "badge--new", Hot: "badge--hot", Popular: "badge--popular" };
-
-/* SIDEBAR DATA */
-const SIDEBAR_ICONS = [
-  sidebar1,
-  sidebar2,
-  sidebar3,
-  sidebar4
-];
-
-/* ─────────────────────────────────────────
-   SIDEBAR ICONS (inline SVG)
-───────────────────────────────────────── */
-const SIDEBAR_TOP = [
-  {
-    label: "Announcements",
-    icon: <svg viewBox="0 0 24 24" fill="none"><path d="M3 9.5h14M3 14.5h14M17 5l4 7-4 7" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
-  {
-    label: "Messages",
-    icon: <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
-  {
-    label: "Help",
-    icon: <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.7"/><path d="M12 16v-.5M12 13a2 2 0 10-2-2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg>,
-  },
-  {
-    label: "Activity",
-    icon: <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 12h6M9 16h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  },
-];
+const SIDEBAR_ICONS = [sidebar1, sidebar2, sidebar3, sidebar4];
 
 const SIDEBAR_SOCIAL = [
   {
@@ -125,7 +92,9 @@ const SIDEBAR_SOCIAL = [
   },
 ];
 
-/* SIDEBAR */
+/* ─────────────────────────────────────────
+   SIDEBAR
+───────────────────────────────────────── */
 function FbSidebar() {
   return (
     <aside className="fb-sidebar">
@@ -136,9 +105,7 @@ function FbSidebar() {
           </button>
         ))}
       </div>
-
       <div className="fb-sidebar__divider" />
-
       <div className="fb-sidebar__social">
         {SIDEBAR_SOCIAL.map((item) => (
           <a key={item.label} className="fb-sidebar__btn">
@@ -186,62 +153,67 @@ function BoxCard({ box }) {
    MAIN COMPONENT
 ───────────────────────────────────────── */
 export default function FeaturedBoxes() {
-  const [activeTab, setActiveTab] = useState("Featured Boxes"); 
-  const [sortOpen, setSortOpen] = useState(false);
-  const [sortBy, setSortBy]     = useState("Default"); // Pre-used default filter
+  const [activeTab, setActiveTab] = useState("Featured Boxes");
+  const [sortOpen, setSortOpen]   = useState(false);
+  const [sortBy, setSortBy]       = useState("Default");
 
   const getBoxesToDisplay = () => {
     switch (activeTab) {
-      case "New Boxes":
-        return NEW_BOXES;
-      case "Top Boxes":
-        return TOP_BOXES;
-      case "Featured Boxes":
-      default:
-        return FEATURED_BOXES;
+      case "New Boxes":  return NEW_BOXES;
+      case "Top Boxes":  return TOP_BOXES;
+      default:           return FEATURED_BOXES;
     }
   };
 
-  // 1. Get the current array based on the tab
-  const baseArray = getBoxesToDisplay();
-  
-  // 2. Create a copy of the array and sort it based on user selection
+  const baseArray   = getBoxesToDisplay();
   const sortedBoxes = [...baseArray].sort((a, b) => {
     switch (sortBy) {
-      case "Price: Low to High":
-        return a.price - b.price;
-      case "Price: High to Low":
-        return b.price - a.price;
-      case "Name: A-Z":
-        return a.name.localeCompare(b.name);
-      case "Popularity":
-        // Sorts items with the "Popular" badge to the very front
+      case "Price: Low to High":  return a.price - b.price;
+      case "Price: High to Low":  return b.price - a.price;
+      case "Name: A-Z":           return a.name.localeCompare(b.name);
+      case "Popularity": {
         const aPop = a.badges.includes("Popular") ? 1 : 0;
         const bPop = b.badges.includes("Popular") ? 1 : 0;
         return bPop - aPop;
-      case "New Arrival":
-        // Sorts items with the "New" badge to the very front
+      }
+      case "New Arrival": {
         const aNew = a.badges.includes("New") ? 1 : 0;
         const bNew = b.badges.includes("New") ? 1 : 0;
         return bNew - aNew;
-      case "Default":
-      default:
-        // Returns 0 to keep the array in its original original layout
-        return 0; 
+      }
+      default: return 0;
     }
   });
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setSortBy("Default");
+  };
 
   return (
     <section className="fb-section">
       <FbSidebar />
 
       <div className="fb-body">
+        {/*
+          Desktop  → single flex row: [title]  [tabs-center]  [sort]
+          Mobile   → two rows via CSS order:
+                     row 1: [title (order:1)]  [sort (order:2)]
+                     row 2: [tabs  (order:3, width:100%)]
+        */}
         <div className="fb-header">
-          <div className="fb-header__title">
-          <div className="header__icon">
-            <img src={sectionIcon} alt="" className="fb-header__icon" />
+
+         <div className="fb-header__title">
+            <div className="header__icon">
+              <img src={sectionIcon} alt="" className="fb-header__icon" />
             </div>
-            <h2>{activeTab}</h2>
+            {/* Updated responsive title */}
+            <h2 className="responsive-title">
+              {/* This keeps your dynamic tab names for Desktop */}
+              <span className="title-desktop">{activeTab}</span>
+              {/* Hardcoded string for Mobile */}
+              <span className="title-mobile">All Boxes</span>
+            </h2>
           </div>
 
           <div className="fb-header__tabs">
@@ -249,10 +221,7 @@ export default function FeaturedBoxes() {
               <button
                 key={tab}
                 className={`fb-tab${activeTab === tab ? " fb-tab--active" : ""}`}
-                onClick={() => {
-                  setActiveTab(tab);
-                  setSortBy("Default"); // Optional: resets the sort when changing tabs!
-                }}
+                onClick={() => handleTabChange(tab)}
               >
                 {tab === "Featured Boxes" ? "Featured" : tab}
               </button>
@@ -263,10 +232,19 @@ export default function FeaturedBoxes() {
             <span className="fb-sort__label">Sort by:</span>
             <div className="fb-sort__dropdown">
               <button className="fb-sort__btn" onClick={() => setSortOpen((p) => !p)}>
-                {/* Dynamically show the selected sort state, but keep it short if needed */}
-                {sortBy === "Default" ? "Default" : sortBy}
-                <svg className={`fb-sort__chevron${sortOpen ? " open" : ""}`} viewBox="0 0 20 20" fill="none">
-                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                {sortBy}
+                <svg
+                  className={`fb-sort__chevron${sortOpen ? " open" : ""}`}
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M5 7.5L10 12.5L15 7.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
               {sortOpen && (
@@ -285,9 +263,9 @@ export default function FeaturedBoxes() {
               )}
             </div>
           </div>
+
         </div>
 
-        {/* 3. Map over the sorted array instead of the raw one */}
         <div className="fb-grid">
           {sortedBoxes.map((box) => <BoxCard key={box.id} box={box} />)}
         </div>

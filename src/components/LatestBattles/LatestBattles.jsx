@@ -71,9 +71,8 @@ const LatestBattles = () => {
             <div
               className="items-display"
               style={{
-                backgroundColor: `${battle.themeColor}22`,
-                border: `1px solid ${battle.themeColor}66`
-              }}
+  backgroundColor: "#2988520D",
+}}
             >
               {battle.items.map((box, index) => (
                 <div key={index} className="item-box">

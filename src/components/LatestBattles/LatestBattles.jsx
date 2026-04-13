@@ -67,18 +67,20 @@ const LatestBattles = () => {
               </div>
             </div>
 
-            {/* Items */}
-            <div
-              className="items-display"
-              style={{
-  backgroundColor: "#2988520D",
-}}
-            >
-              {battle.items.map((box, index) => (
-                <div key={index} className="item-box">
-                  <img src={box} alt="case" />
-                </div>
-              ))}
+            {/* ✅ NEW WRAPPER ADDED HERE */}
+            <div className="items-scroll-wrapper">
+              <div
+                className="items-display"
+                style={{
+                  backgroundColor: "#2988520D",
+                }}
+              >
+                {battle.items.map((box, index) => (
+                  <div key={index} className="item-box">
+                    <img src={box} alt="case" />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Action */}

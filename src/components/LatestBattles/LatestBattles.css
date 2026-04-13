@@ -112,12 +112,31 @@
 }
 
 /* ✅ NEW: The wrapper handles the scrolling now */
+/* 1. The Wrapper becomes the Static Window Frame */
 .items-scroll-wrapper {
   flex: 1;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
+  position: relative; /* Anchors the border so it NEVER moves */
   border-radius: 8px;
+  min-width: 0; /* Keeps it neatly inside your grid/flex layout */
+}
+
+/* 2. The Border moves to the Wrapper (REPLACES your old .items-display::before) */
+.items-scroll-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: 
+    linear-gradient(90deg, #39FF88 -2.07%, rgba(34, 153, 82, 0) 38.17%),
+    linear-gradient(270deg, #39FF88 0%, rgba(34, 153, 82, 0) 24.85%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; /* Lets clicks pass through to the items */
+  z-index: 5; /* Keeps border visible on top of scrolling items */
 }
 
 .items-scroll-wrapper::-webkit-scrollbar {
@@ -139,24 +158,20 @@
 }
 
 /* The magic border layer */
-.items-display::before {
-  content: "";
-  position: absolute;
-  inset: 0; 
-  border-radius: 8px; 
-  padding: 1px; 
+/* 3. The Inner Display handles the scrolling */
+.items-display {
+  display: flex;
+  justify-content: flex-start; /* Essential so items don't get cut off on the left when scrolling on small screens */
+  gap: 15px;
+  padding: 5px 20px;
+  width: 100%; /* Fills the static frame perfectly */
+  overflow-x: auto; /* The scroll magic happens here now */
+  scrollbar-width: none;
+  border-radius: 8px;
+}
 
-  background: 
-    linear-gradient(90deg, #39FF88 -2.07%, rgba(34, 153, 82, 0) 38.17%),
-    linear-gradient(270deg, #39FF88 0%, rgba(34, 153, 82, 0) 24.85%);
-
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-
-  pointer-events: none; 
+.items-display::-webkit-scrollbar {
+  display: none;
 }
 
 .item-box {

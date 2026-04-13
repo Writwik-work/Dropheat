@@ -161,7 +161,7 @@
 /* 3. The Inner Display handles the scrolling */
 .items-display {
   display: flex;
-  justify-content: flex-start; /* Essential so items don't get cut off on the left when scrolling on small screens */
+  justify-content: space-evenly; /* Essential so items don't get cut off on the left when scrolling on small screens */
   gap: 15px;
   padding: 5px 20px;
   width: 100%; /* Fills the static frame perfectly */

@@ -127,7 +127,7 @@
 /* ✅ UPDATED: The display stretches to fit ALL items */
 .items-display {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   gap: 15px;
   padding: 5px 20px;
   position: relative;
